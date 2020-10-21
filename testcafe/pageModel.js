@@ -17,6 +17,15 @@ class Page{
         //Practice 4
         this.checkboxes_Link = Selector('a').withText('Checkboxes');
         this.checkBoxes_Form = Selector('#checkboxes > input[type=checkbox]');
+
+        //Practice 5
+        this.inputs_Link = Selector('a').withText('Inputs');
+        this.number_input = Selector('#content > div > div > div > input[type=number]');
+
+        //Practice 6
+        this.add_remove_Link = Selector('a').withText('Add/Remove Elements');
+        this.add_Btn = Selector('#content > div > button');
+        this.remove_Btn = Selector('#elements > button');
     }
 }
 
