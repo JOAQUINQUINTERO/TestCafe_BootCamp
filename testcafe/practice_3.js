@@ -32,3 +32,12 @@ fixture('Third practice with TestCafe')
         await t
             .expect(page.confirm_text.innerText).contains('sent','Succesfull Test')
     })
+
+    test("Verify (500 Internal Server Error)", async t =>{
+        await t
+            .click(page.forgot_Link)
+        await t
+            .click(page.forgot_Button_Submit)
+        await t
+            .expect(page.confirm_text.innerText).contains("Internal Server Error")
+    });

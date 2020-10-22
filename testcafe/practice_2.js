@@ -8,13 +8,15 @@ fixture('Second practice with testcafe')
         await t 
             .click(page.AB_Link)
         await t
-            //.expect(page.text21.exists).ok();
-            //.expect(page.text21.innerText).contains('A/B Test Variation 1');
-            if(page.AB_H3.innerText === 'A/B Test Variation 1' || 'A/B Testing' || 'A/B Test Variation'){
+
+            if(page.AB_H3.innerText === "HI"){
                 console.log('Test aprooved');
                 console.log(page.AB_H3.innerText);
-            }else{
-                console.log('Test failed');
+            } else {
+                console.log('The text does not match what is expected');
                 console.log(page.AB_H3.innerText);
-            }
+                await t
+                    .expect (page.AB_H3.innerText).contains("A/B Test Control" || "A/B Test Variation 1")
+                    console.log(page.AB_H3.innerText);
+            } 
     });
