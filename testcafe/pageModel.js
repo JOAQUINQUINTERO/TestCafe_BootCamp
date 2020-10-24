@@ -53,6 +53,17 @@ class Page{
         //Practice 10
         this.right_click_Link = Selector('a').withText('Context Menu');
         this.hot_spot_context = Selector('#hot-spot');
+
+        //Practice 11
+        this.horizontal_slider_Link = Selector('a').withText('Horizontal Slider');
+        this.horizontal_slider = Selector('#content > div > div > input[type=range]');
+
+        //Practice 12
+        this.checkBox_Tried = Selector('#tried-test-cafe');
+        this.slider = {
+            handle: Selector('.ui-slider-handle'),
+            value:   Selector('.slider-value')
+        };
     }
 }
 
