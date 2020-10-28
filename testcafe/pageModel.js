@@ -44,6 +44,14 @@ class Page{
         this.submit_text = Selector('h1').withText('Thanks for submitting your form');
 
         //Practice 8 HomeWork Auth Login
+        this.login_Link = Selector('a').withText('Form Authentication');
+        this.login_H2 = Selector('h2').withText('Login Page');
+        this.username_Input = Selector('#username');
+        this.password_Input = Selector('#password');
+        this.login_Btn = Selector('#login > button > i');
+        this.flash_Alert = Selector('#flash');
+        this.subHeaders = Selector('h2').withText('Secure Area');
+        this.logOut_Btn = Selector('#content > div > a');
 
         //Practice 9
         this.key_press_Link = Selector('a').withText('Key Presses');
