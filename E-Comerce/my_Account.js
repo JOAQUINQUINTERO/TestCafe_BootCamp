@@ -1,10 +1,5 @@
 import page from './pageModel';
-
-let rndNumber = Math.random().toString(36).substr(1,4);
-const email =  `dummy${rndNumber}@mailinator.com`;
-const firstName = 'Joaquin';
-const lastName = 'Quintero';
-const password = '88888';
+import { data } from './data';
 
 fixture('Testing my account module')
     .page('http://automationpractice.com/index.php');
@@ -12,23 +7,29 @@ fixture('Testing my account module')
 test('Create an account', async t =>{
     await t 
         .click(page.signIn_Link)
-        console.log(`Generated email: ${email}`);
+        console.log(`Generated email: ${data.email}`);
     
     await t
-        .typeText(page.email_Input, email)
-        .expect(page.email_Input.value).contains(email)
+        .typeText(page.email_Input, data.email)
+        .expect(page.email_Input.value).contains(data.email)
         .click(page.btn_createAcount)
     
     await t
-        .expect(page.email_form.value).contains(email)
-        .typeText(page.firstName_Input, firstName)
-        .typeText(page.lastName_Input, lastName)
+        .expect(page.email_form.value).contains(data.email)
+        .typeText(page.firstName_Input, data.firstName)
+        .typeText(page.lastName_Input, data.lastName)
 
-        .expect(page.firstName_Address.value).contains(firstName)
-        .expect(page.lastName_Address.value).contains(lastName)
+        .expect(page.firstName_Address.value).contains(data.firstName)
+        .expect(page.lastName_Address.value).contains(data.lastName)
 
-        .typeText(page.password_form, password)
-        .typeText(page.address_Input, 'PO BOX 1')
+        .typeText(page.password_form, data.password)
+
+        .typeText(page.address_Input, data.poBox)
+        .expect(page.address_Input.value).contains(data.poBox)
+        .typeText(page.city_Input, data.city)
+        .expect(page.city_Input.value).contains(data.city)
+        .click(page.state_Select)
+        .click(page.state_Select_opt.nth(4))
 
 
 });

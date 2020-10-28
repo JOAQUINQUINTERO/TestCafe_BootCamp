@@ -12,6 +12,9 @@ class Page{
         this.firstName_Address = Selector('#firstname');
         this.lastName_Address = Selector('#lastname');
         this.address_Input = Selector('#address1');
+        this.city_Input = Selector('#city');
+        this.state_Select = Selector('#id_state');
+        this.state_Select_opt = Selector('#id_state > option');
     }
 }
 
