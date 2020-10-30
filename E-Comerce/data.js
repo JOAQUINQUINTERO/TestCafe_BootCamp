@@ -7,6 +7,8 @@ const data = {
     poBox: 'PO BOX 1',
     city: 'Fresno',
     state: 'California',
+    postCode: '93245',
+    phone: '2524352435243'
 }
 
 export {data}

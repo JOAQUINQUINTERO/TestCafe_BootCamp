@@ -30,7 +30,13 @@ test('Create an account', async t =>{
         .expect(page.city_Input.value).contains(data.city)
         .click(page.state_Select)
         .click(page.state_Select_opt.nth(4))
-
+        .typeText(page.post_code_Input, data.postCode)
+        .typeText(page.phone_Input, data.phone)
+        .expect(page.post_code_Input.value).contains(data.postCode)
+        .click(page.country_Select)
+        .click(page.country_Select_opt.nth(1))
+        .click(page.btn_Submit)
+        //.expect(page.adressAlias.value).contains(data.poBox)
 
 });
 test('Login with new account', async t =>{});

@@ -15,6 +15,12 @@ class Page{
         this.city_Input = Selector('#city');
         this.state_Select = Selector('#id_state');
         this.state_Select_opt = Selector('#id_state > option');
+        this.post_code_Input = Selector('#postcode');
+        this.country_Select = Selector('#id_country');
+        this.country_Select_opt = Selector('#id_country > option');
+        this.phone_Input = Selector('#phone_mobile');
+        this.addressAlias = Selector('#alias');
+        this.btn_Submit = Selector('#submitAccount');
     }
 }
 
