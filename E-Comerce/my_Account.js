@@ -13,6 +13,7 @@ test('Create an account', async t =>{
         .typeText(page.email_Input, data.email)
         .expect(page.email_Input.value).contains(data.email)
         .click(page.btn_createAcount)
+        .debug()
     
     await t
         .expect(page.email_form.value).contains(data.email)
