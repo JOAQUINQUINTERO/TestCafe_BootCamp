@@ -11,4 +11,4 @@ const data = {
     phone: '2524352435243'
 }
 
-export {data}
+export {data,rndNumber}

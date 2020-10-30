@@ -1,5 +1,5 @@
 import page from './pageModel';
-import { data } from './data';
+import { data, rndNumber } from './data';
 
 fixture('Testing my account module')
     .page('http://automationpractice.com/index.php');
@@ -7,13 +7,16 @@ fixture('Testing my account module')
 test('Create an account', async t =>{
     await t 
         .click(page.signIn_Link)
-        console.log(`Generated email: ${data.email}`);
+        console.log(`Generated email: ${data.email} ${rndNumber}`);
     
     await t
         .typeText(page.email_Input, data.email)
         .expect(page.email_Input.value).contains(data.email)
+        .takeElementScreenshot(page.btn_createAcount)
+        .takeScreenshot()
         .click(page.btn_createAcount)
-        .debug()
+        
+        //.debug()
     
     await t
         .expect(page.email_form.value).contains(data.email)
