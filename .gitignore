@@ -1,0 +1,6 @@
+*.DS_STORE
+.DS_STORE
+Thumbs.db
+/node_modules
+E-Comerce/node_modules/
+*package-lock.json
