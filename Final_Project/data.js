@@ -1,4 +1,4 @@
-const rndNumber = Math.random().toString(36).substr(1,4);
+const rndNumber = Math.random().toString(36).substr(1,15);
 const data = {
     email: `dummy${rndNumber}@mailinator.com`,
     firstName: 'Joaquin',

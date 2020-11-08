@@ -114,7 +114,7 @@ test("Validate T-Shirt link and validate results", async (t) => {
     .click(page.home_category_links.nth(2));
 
   await t.expect(page.product_list_grid.exists).ok();
-  let numProducts = await page.product_list_grid.count;
+  const numProducts = await page.product_list_grid.count;
   for (var i = 0; i < numProducts; i++)
     await t
       .expect(page.product_list_grid.nth(i).innerText)
@@ -133,7 +133,7 @@ test("Validate Woman dresses link and validate results", async (t) => {
     .click(page.woman_dresses_links.nth(1));
 
   await t.expect(page.product_list_grid.exists).ok();
-  let numProducts = await page.product_list_grid.count;
+  const numProducts = await page.product_list_grid.count;
   for (var i = 0; i < numProducts; i++)
     await t.expect(page.product_list_grid.nth(i).innerText).contains("Dress");
 });
@@ -143,10 +143,10 @@ test("Validate hover Woman and select blouse validate results", async (t) => {
     .expect(page.home_category_links.nth(0).exists)
     .ok()
     .hover(page.home_category_links.nth(0))
-    .click(pages.woman_drop_down_menu_blouses);
+    .click(page.woman_drop_down_menu_blouses);
 
   await t.expect(page.product_list_grid.exists).ok();
-  let numProducts = await page.product_list_grid.count;
+  const numProducts = await page.product_list_grid.count;
   for (var i = 0; i < numProducts; i++)
     await t.expect(page.product_list_grid.nth(i).innerText).contains("Blouse");
 });

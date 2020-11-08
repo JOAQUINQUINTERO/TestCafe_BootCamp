@@ -6,9 +6,56 @@ fixture("Final Project account module").page(
   "http://automationpractice.com/index.php"
 );
 
+test("Create an account without Email", async (t) => {
+  await t.click(page.signIn_Link);
+
+  await t
+    .expect(page.btn_createAcount.visible)
+    .ok()
+    .click(page.btn_createAcount)
+    .expect(page.errorsAccountEmail.innerText)
+    .contains(errors.invalid_email);
+});
+test("Create account with invalid email format", async (t) => {
+  await t.click(page.signIn_Link);
+
+  await t
+    .expect(page.email_Input.visible)
+    .ok()
+    .typeText(page.email_Input, "135135143!@#514351@.com")
+    .expect(page.btn_createAcount.visible)
+    .ok()
+    .click(page.btn_createAcount)
+    .expect(page.errorsAccountEmail.innerText)
+    .contains(errors.invalid_email);
+});
+test("Create account with email already registered", async (t) => {
+  await t.click(page.signIn_Link);
+
+  await t
+    .typeText(page.email_Input, "a@a.com")
+    .expect(page.btn_createAcount.visible)
+    .ok()
+    .click(page.btn_createAcount)
+    .expect(page.errorsAccountEmail.innerText)
+    .contains(errors.exist_email);
+});
+test("Validate forgot password with invalid email", async (t) => {
+  await t.click(page.signIn_Link);
+
+  await t.click(page.forgot_link);
+
+  await t
+    .expect(page.email_form.visible)
+    .ok()
+    .typeText(page.email_form, data.email)
+    .click(page.retrive_password_btn)
+    .expect(page.errorsForgotPassword.innerText)
+    .contains(errors.notRegistered_email);
+});
 test("Create an account and fill out form values", async (t) => {
   await t.click(page.signIn_Link);
-  console.log(data.email);
+  
   await t
     .typeText(page.email_Input, data.email)
     .expect(page.email_Input.value)
@@ -44,54 +91,35 @@ test("Create an account and fill out form values", async (t) => {
     .contains(data.postCode)
     .click(page.country_Select)
     .click(page.country_Select_opt.nth(1))
-    .click(page.btn_Submit)
+    .click(page.btn_Submit);
 });
-test("Create an account without Email", async (t) => {
+test("Create an account and validate emtpy register form", async (t) => {
   await t.click(page.signIn_Link);
 
   await t
-    .expect(page.btn_createAcount.visible)
-    .ok()
-    .click(page.btn_createAcount)
-    .expect(page.errorsAccountEmail.innerText)
-    .contains(errors.invalid_email);
-});
-test("Create account with invalid email format", async (t) => {
-  await t.click(page.signIn_Link);
-
-  await t
-    .expect(page.email_Input.visible)
-    .ok()
-    .typeText(page.email_Input, "135135143!@#514351@.com")
-    .expect(page.btn_createAcount.visible)
-    .ok()
-    .click(page.btn_createAcount)
-    .expect(page.errorsAccountEmail.innerText)
-    .contains(errors.invalid_email);
-});
-test("Create account with email already registered", async (t) => {
-  await t.click(page.signIn_Link);
-
-  await t
-    .typeText(page.email_Input, "a@a.com")
-    .expect(page.btn_createAcount.visible)
-    .ok()
-    .click(page.btn_createAcount)
-    .expect(page.errorsAccountEmail.innerText)
-    .contains(errors.email_exist);
-});
-test("Create new accout with a valid email", async (t) => {
-  await t.click(page.signIn_Link);
-
-  await t
-    .typeText(page.email_Input, data.email)
+    .typeText(page.email_Input, `_${data.email}`)
     .expect(page.email_Input.value)
     .contains(data.email)
-    .expect(page.btn_createAcount.visible)
-    .ok()
     .click(page.btn_createAcount);
 
-  await t.expect(page.createForm.visible).ok();
+  await t
+    .click(page.btn_Submit)
+    .expect(page.register_Form.nth(0).innerText)
+    .contains(errors.register_phone_required)
+    .expect(page.register_Form.nth(1).innerText)
+    .contains(errors.register_last_name_required)
+    .expect(page.register_Form.nth(2).innerText)
+    .contains(errors.register_first_name_required)
+    .expect(page.register_Form.nth(3).innerText)
+    .contains(errors.register_password_required)
+    .expect(page.register_Form.nth(4).innerText)
+    .contains(errors.register_address_required)
+    .expect(page.register_Form.nth(5).innerText)
+    .contains(errors.register_city_required)
+    .expect(page.register_Form.nth(6).innerText)
+    .contains(errors.register_zip_code_required)
+    .expect(page.register_Form.nth(7).innerText)
+    .contains(errors.register_country_required);
 });
 test("Validate sign-in empty form", async (t) => {
   await t.click(page.signIn_Link);
@@ -156,20 +184,6 @@ test("Validate forgot password with invalid email format", async (t) => {
     .contains(errors.invalid_email);
 });
 
-test("Validate forgot password with invalid email", async (t) => {
-  await t.click(page.signIn_Link);
-
-  await t.click(page.forgot_link);
-
-  await t
-    .expect(page.email_form.visible)
-    .ok()
-    .typeText(page.email_form, data.email)
-    .click(page.retrive_password_btn)
-    .expect(page.errorsForgotPassword.innerText)
-    .contains(errors.notRegistered_email);
-});
-
 test("Validate forgot password with valid email", async (t) => {
   await t.click(page.signIn_Link);
 
@@ -182,33 +196,4 @@ test("Validate forgot password with valid email", async (t) => {
     .click(page.retrive_password_btn)
     .expect(page.alertForgotPassword.innerText)
     .contains(errors.forgot_password_alert);
-});
-
-test("Create an account and validate emtpy register form", async (t) => {
-  await t.click(page.signIn_Link);
-
-  await t
-    .typeText(page.email_Input, data.email)
-    .expect(page.email_Input.value)
-    .contains(data.email)
-    .click(page.btn_createAcount);
-
-  await t
-    .click(page.btn_Submit)
-    .expect(page.register_Form.nth(0).innerText)
-    .contains(errors.register_phone_required)
-    .expect(page.register_Form.nth(1).innerText)
-    .contains(errors.register_last_name_required)
-    .expect(page.register_Form.nth(2).innerText)
-    .contains(errors.register_first_name_required)
-    .expect(page.register_Form.nth(3).innerText)
-    .contains(errors.register_password_required)
-    .expect(page.register_Form.nth(4).innerText)
-    .contains(errors.register_address_required)
-    .expect(page.register_Form.nth(5).innerText)
-    .contains(errors.register_city_required)
-    .expect(page.register_Form.nth(6).innerText)
-    .contains(errors.register_zip_code_required)
-    .expect(page.register_Form.nth(7).innerText)
-    .contains(errors.register_country_required);
 });

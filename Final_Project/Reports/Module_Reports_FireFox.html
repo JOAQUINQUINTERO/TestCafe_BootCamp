@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Contents/bootstrap-sortable.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/bootstrap-sortable.js"></script>
+    <script src="https://cdn.rawgit.com/drvic10k/bootstrap-sortable/ff650fd1/Scripts/moment.min.js"></script>
+    <style>
+      body {font-family: Arial, Helvetica, sans-serif;}
+
+      .thumbImg {
+        width: 100%;
+        max-width: 35px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-bottom: 5px;
+        border-width: 1px;
+        border-color: #f1f1f1;
+        border-style: solid;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+      }
+
+      .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+      }
+
+      .closeModal {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+      .closeModal:hover,
+      .closeModal:focus {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myModal" class="modal">
+      <span class="closeModal">&times;</span>
+      <img class="modal-content" id="modelImage">
+    </div>
+    <div class="container">
+
+      <h1 class="text-primary">TestCafe Test Summary</h1>
+      <div class="client-logo" style="padding:15px"></div>
+      <div class="bg-primary" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
+        <h3>Summary</h3><br>
+        <p class="lead">Start Time: Sun Nov 08 2020 13:29:08 GMT-0700 (Mexican Pacific Standard Time)</p>
+        <p class="lead">Browsers: Firefox 81.0 / macOS 10.15</p>
+        <p class="lead">Duration: 5m 05s</p>
+        <p class="lead">Tests Failed: 0 out of 25</p>
+        <p class="lead">Tests Skipped: 0</p>
+      </div><br>
+      <table class="table sortable" style="padding:15px;box-shadow: 6px 6px 6px 6px #00000033;border-radius: 10px;">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Fixture</th>
+            <th>Test Name</th>
+            <th>Browsers</th>
+            <th>Duration</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+           <tr class="success">
+  <td>1</td>
+  <td>Final Project account module</td>
+  <td>Create an account without Email</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>12s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>2</td>
+  <td>Final Project account module</td>
+  <td>Create account with invalid email format</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>10s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>3</td>
+  <td>Final Project account module</td>
+  <td>Create account with email already registered</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>10s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>4</td>
+  <td>Final Project account module</td>
+  <td>Validate forgot password with invalid email</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>10s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>5</td>
+  <td>Final Project account module</td>
+  <td>Create an account and fill out form values</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>18s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>6</td>
+  <td>Final Project account module</td>
+  <td>Create an account and validate emtpy register form</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>11s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>7</td>
+  <td>Final Project account module</td>
+  <td>Validate sign-in empty form</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>7s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>8</td>
+  <td>Final Project account module</td>
+  <td>Validate sign-in form with valid email and empty password</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>9s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>9</td>
+  <td>Final Project account module</td>
+  <td>Validate sign-in form with valid email and wrong password</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>9s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>10</td>
+  <td>Final Project account module</td>
+  <td>Validate forgot password with emtpy email</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>10s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>11</td>
+  <td>Final Project account module</td>
+  <td>Validate forgot password with invalid email format</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>11s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>12</td>
+  <td>Final Project account module</td>
+  <td>Validate forgot password with valid email</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>9s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>13</td>
+  <td>Final Project account module</td>
+  <td>Validate logo url redirect</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>8s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>14</td>
+  <td>Final Project account module</td>
+  <td>Validate next and previous button banner images</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>5s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>15</td>
+  <td>Final Project account module</td>
+  <td>Validate banner images url redirect</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>13s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>16</td>
+  <td>Final Project account module</td>
+  <td>Validate best seller and popular links</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>4s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>17</td>
+  <td>Final Project account module</td>
+  <td>Validate search input of null values</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>6s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>18</td>
+  <td>Final Project account module</td>
+  <td>Validate search input of not existing values</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>6s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>19</td>
+  <td>Final Project account module</td>
+  <td>Validate search input of existing values</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>8s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>20</td>
+  <td>Final Project account module</td>
+  <td>Validate T-Shirt link and validate banner title</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>6s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>21</td>
+  <td>Final Project account module</td>
+  <td>Validate T-Shirt link and validate results</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>8s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>22</td>
+  <td>Final Project account module</td>
+  <td>Validate Woman dresses link and validate results</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>13s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>23</td>
+  <td>Final Project account module</td>
+  <td>Validate hover Woman and select blouse validate results</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>8s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>24</td>
+  <td>Final Project account module</td>
+  <td>Validate add all products of category to cart and complete checkout</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>47s</td>
+  <td>passed</td>
+ </tr>
+ <tr class="success">
+  <td>25</td>
+  <td>Final Project account module</td>
+  <td>Validate add all products of category to cart delete first two product and complete checkout</td>
+  <td>Firefox 81.0 / macOS 10.15</td>
+  <td>46s</td>
+  <td>passed</td>
+ </tr>
+
+        </tbody>
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+      </table>
+      <br>
+      <h3>Error Details</h3>
+      
+    </div>
+    <script>
+      const modal = document.getElementById('myModal');
+      const modalImage = document.getElementById("modelImage");
+
+      Array.from(document.getElementsByClassName("thumbImg")).forEach(function(el) {
+        el.onclick = function() {
+          modal.style.display = "block";
+          modalImage.src = this.src;
+        }
+      });
+
+      document.getElementsByClassName("closeModal")[0].onclick = function() {
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+  <br>
+</html>

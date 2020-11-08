@@ -35,7 +35,7 @@ test("Validate add all products of category to cart and complete checkout", asyn
     .click(page.woman_dresses_links.nth(1));
 
   await t.expect(page.product_list_grid.exists).ok();
-  let numProducts = await page.product_list_grid.count;
+  const numProducts = await page.product_list_grid.count;
   for (let i = 0; i < numProducts; i++) {
     await t
       .hover(page.product_list_grid.nth(i))
@@ -124,7 +124,7 @@ test("Validate add all products of category to cart delete first two product and
     .click(page.woman_dresses_links.nth(1));
 
   await t.expect(page.product_list_grid.exists).ok();
-  let numProducts = await page.product_list_grid.count;
+  const numProducts = await page.product_list_grid.count;
   for (let i = 0; i < numProducts; i++) {
     await t
       .hover(page.product_list_grid.nth(i))
